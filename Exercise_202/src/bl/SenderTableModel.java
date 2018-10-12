@@ -1,22 +1,39 @@
 package bl;
 
+import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
 
 public class SenderTableModel extends AbstractTableModel {
 
+    private LinkedList<Sender> sender = new LinkedList<>();
+
+    private static String[] colNames = {"Sender", "Frequenz", "Band"};
+
+    public void add(Sender s) {
+        sender.add(s);
+
+        fireTableDataChanged();
+    }
+
     @Override
     public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return sender.size();
     }
 
     @Override
     public int getColumnCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return colNames.length;
     }
 
     @Override
     public Object getValueAt(int i, int i1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Sender s = sender.get(i);
+        return s;
+    }
+
+    @Override
+    public String getColumnName(int i) {
+        return colNames[i];
     }
 
 }

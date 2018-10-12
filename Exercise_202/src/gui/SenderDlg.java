@@ -1,6 +1,19 @@
 package gui;
 
+import bl.Sender;
+
 public class SenderDlg extends javax.swing.JDialog {
+
+    private Sender s;
+    private boolean ok;
+
+    public Sender getS() {
+        return s;
+    }
+
+    public boolean isOk() {
+        return ok;
+    }
 
     public SenderDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -15,7 +28,7 @@ public class SenderDlg extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         tfSendername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        rfFrequenz = new javax.swing.JTextField();
+        tfFrequenz = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         tfband = new javax.swing.JTextField();
         btOk = new javax.swing.JButton();
@@ -47,14 +60,14 @@ public class SenderDlg extends javax.swing.JDialog {
         gridBagConstraints.weighty = 0.1;
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        rfFrequenz.setText("194.6");
+        tfFrequenz.setText("194.6");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
         gridBagConstraints.weighty = 0.1;
-        getContentPane().add(rfFrequenz, gridBagConstraints);
+        getContentPane().add(tfFrequenz, gridBagConstraints);
 
         jLabel3.setText("Band:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -75,6 +88,11 @@ public class SenderDlg extends javax.swing.JDialog {
         getContentPane().add(tfband, gridBagConstraints);
 
         btOk.setText("Ok");
+        btOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btOkActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -84,6 +102,11 @@ public class SenderDlg extends javax.swing.JDialog {
         getContentPane().add(btOk, gridBagConstraints);
 
         btCance.setText("Cancel");
+        btCance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCanceActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -94,6 +117,17 @@ public class SenderDlg extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed
+        s = new Sender(tfSendername.getText(), Double.parseDouble(tfFrequenz.getText()), tfband.getText());
+        ok = true;
+        dispose();
+    }//GEN-LAST:event_btOkActionPerformed
+
+    private void btCanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCanceActionPerformed
+        ok = false;
+        dispose();
+    }//GEN-LAST:event_btCanceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,7 +177,7 @@ public class SenderDlg extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField rfFrequenz;
+    private javax.swing.JTextField tfFrequenz;
     private javax.swing.JTextField tfSendername;
     private javax.swing.JTextField tfband;
     // End of variables declaration//GEN-END:variables
