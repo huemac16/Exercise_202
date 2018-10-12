@@ -1,6 +1,8 @@
 package gui;
 
+import bl.Sender;
 import bl.SenderTableModel;
+import bl.SenderTableRenderer;
 
 public class RadioGUI extends javax.swing.JFrame {
 
@@ -8,6 +10,17 @@ public class RadioGUI extends javax.swing.JFrame {
 
     public RadioGUI() {
         initComponents();
+        initTable();
+        table.setModel(bl);
+        table.setDefaultRenderer(Object.class, new SenderTableRenderer());
+        bl.add(new Sender("Radio Steiermark", 89.87, "FM"));
+
+    }
+
+    public void initTable() {
+        table.getColumnModel().getColumn(0).setWidth(150);
+        table.getColumnModel().getColumn(1).setWidth(120);
+        table.getColumnModel().getColumn(2).setWidth(50);
     }
 
     @SuppressWarnings("unchecked")
@@ -67,6 +80,7 @@ public class RadioGUI extends javax.swing.JFrame {
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         SenderDlg dialog = new SenderDlg(this, true);
+        dialog.setVisible(true);
         if (dialog.isOk()) {
             bl.add(dialog.getS());
         }

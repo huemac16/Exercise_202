@@ -1,6 +1,7 @@
 package gui;
 
 import bl.Sender;
+import javax.swing.JOptionPane;
 
 public class SenderDlg extends javax.swing.JDialog {
 
@@ -119,9 +120,22 @@ public class SenderDlg extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed
-        s = new Sender(tfSendername.getText(), Double.parseDouble(tfFrequenz.getText()), tfband.getText());
-        ok = true;
+        try {
+            if (tfband.getText().equals("AM") || tfband.getText().equals("FM")) {
+                if (Double.parseDouble(tfFrequenz.getText()) > 0 && Double.parseDouble(tfFrequenz.getText()) < 1000) {
+                    s = new Sender(tfSendername.getText(), Double.parseDouble(tfFrequenz.getText()), tfband.getText());
+                    ok = true;
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "fasche Eingabe!");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "fasche Eingabe!");
+        }
         dispose();
+
     }//GEN-LAST:event_btOkActionPerformed
 
     private void btCanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCanceActionPerformed

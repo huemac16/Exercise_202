@@ -1,5 +1,6 @@
 package bl;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
 
@@ -11,7 +12,7 @@ public class SenderTableModel extends AbstractTableModel {
 
     public void add(Sender s) {
         sender.add(s);
-
+        sort();
         fireTableDataChanged();
     }
 
@@ -34,6 +35,10 @@ public class SenderTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int i) {
         return colNames[i];
+    }
+
+    public void sort() {
+        Collections.sort(sender, new sortByFrequenz());
     }
 
 }
