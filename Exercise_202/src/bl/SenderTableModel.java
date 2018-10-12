@@ -16,6 +16,16 @@ public class SenderTableModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    public void updateNumCols(boolean hide) {
+        if (hide) {
+            colNames = new String[]{"Sender", "Frequenz"};
+        } else {
+            colNames = new String[]{"Sender", "Frequenz", "Band"};
+        }
+
+        fireTableStructureChanged();
+    }
+
     @Override
     public int getRowCount() {
         return sender.size();
