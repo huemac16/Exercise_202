@@ -14,13 +14,16 @@ public class RadioGUI extends javax.swing.JFrame {
         table.setModel(bl);
         table.setDefaultRenderer(Object.class, new SenderTableRenderer());
         bl.add(new Sender("Radio Steiermark", 89.87, "FM"));
+        bl.add(new Sender("Ö3", 77.98, "AM"));
+        bl.add(new Sender("Kronehit", 230.88, "FM"));
 
     }
 
-    public void initTable() {
+    private void initTable() {
         table.getColumnModel().getColumn(0).setWidth(150);
         table.getColumnModel().getColumn(1).setWidth(120);
         table.getColumnModel().getColumn(2).setWidth(50);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -59,6 +62,7 @@ public class RadioGUI extends javax.swing.JFrame {
         jPopupMenu1.add(show);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Radio");
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

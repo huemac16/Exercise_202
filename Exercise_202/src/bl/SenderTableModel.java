@@ -1,5 +1,8 @@
 package bl;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Collections;
 import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
@@ -24,6 +27,18 @@ public class SenderTableModel extends AbstractTableModel {
         }
 
         fireTableStructureChanged();
+    }
+
+    public void load(File f) {
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            br.readLine();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void save(File f) {
+
     }
 
     @Override

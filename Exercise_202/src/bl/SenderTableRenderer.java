@@ -38,6 +38,8 @@ public class SenderTableRenderer implements TableCellRenderer {
                     break;
 
             }
+            label.setBackground(bln ? new Color(0, 0, 0) : Color.RED);
+            label.setForeground(bln ? new Color(255, 255, 255) : Color.LIGHT_GRAY);
         } else if (s.getBand().equals("AM")) {
             switch (i1) {
 
@@ -58,6 +60,8 @@ public class SenderTableRenderer implements TableCellRenderer {
                     break;
 
             }
+            label.setBackground(bln ? new Color(0, 0, 0) : Color.BLUE);
+            label.setForeground(bln ? new Color(255, 255, 255) : Color.LIGHT_GRAY);
 
         }
 
